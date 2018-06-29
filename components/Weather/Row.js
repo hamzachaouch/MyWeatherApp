@@ -46,7 +46,7 @@ export default class Row extends React.Component{
     render (){
         if (this.props.index===0){
             return(
-                <Enter>
+                <Enter delay={this.props.index * 50}>
                 <View style={[style.view,{backgroundColor:'#e54b65'}]}>
                     <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center'}}>
                         <Text style={{color:'#FFF'}}> {this.getDay()}{this.getDate()} </Text>
@@ -60,7 +60,7 @@ export default class Row extends React.Component{
 
         }else{
         return(
-            <Enter>
+            <Enter delay={this.props.index * 50} >
             <View style={style.view}>
                 <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center'}}>
                     {this.icon()}

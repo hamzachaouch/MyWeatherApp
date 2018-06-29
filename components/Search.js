@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, TextInput,Image,View} from 'react-native'
+import {Button, TextInput,Image,View,Keyboard} from 'react-native'
 import style from  '../Style'
 import  List from './List'
 import  {createStackNavigator} from  'react-navigation'
@@ -26,6 +26,7 @@ import  {createStackNavigator} from  'react-navigation'
     }
 
     submit(){
+         Keyboard.dismiss()
         this.props.navigation.navigate('Result',{city: this.state.city})
     }
 
@@ -35,6 +36,7 @@ import  {createStackNavigator} from  'react-navigation'
 
                    <TextInput
                        underlineColorAndroid='transparent'
+                       onSubmitEditing={()=>this.submit()}
                        onChangeText={(text)=> this.setCity(text)}
                        style={{height: 40, borderColor: 'gray', borderWidth: 1,marginBottom: 20,paddingHorizontal: 10}}
                        value={this.state.city}
