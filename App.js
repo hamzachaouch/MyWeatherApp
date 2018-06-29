@@ -1,5 +1,5 @@
 import React from 'react';
-import  {View,StatusBar} from 'react-native'
+import  {View,StatusBar,Image} from 'react-native'
 import About from './components/About'
 import Search from './components/Search'
 
@@ -7,7 +7,20 @@ import  {createBottomTabNavigator} from 'react-navigation'
 const Tabs = createBottomTabNavigator({
     Search : {screen : Search},
     About : {screen : About}
-},
+},{
+    navigationOptions: ({ navigation }) => ({
+        tabBarIcon: () => {
+            const { routeName } = navigation.state;
+
+            if (routeName === 'Search') {
+                return <Image source={require('./components/icons/home.png')} style={{ width:20 , height:20 }} />
+            } else if (routeName === 'About') {
+                return <Image source={require('./components/icons/user.png')} style={{ width:20 , height:20 }} />
+            }
+
+          }
+     })}
+    ,
     {
         tabBarOptions:{
          showIcon : true,

@@ -12,7 +12,7 @@ export default class Row extends React.Component{
     }
     parseFarCel (tempF){
         var res = parseFloat(tempF)
-        return (((res-32)*5)/9)
+        return (res-273.15)
 
     }
     icon (size= 50){
@@ -45,8 +45,8 @@ export default class Row extends React.Component{
     render (){
         if (this.props.index===0){
             return(
-                <View style={style.view}>
-                    <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center',color:'#e54b65'}}>
+                <View style={[style.view,{backgroundColor:'#e54b65'}]}>
+                    <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center'}}>
                         <Text style={{color:'#FFF'}}> {this.getDay()}{this.getDate()} </Text>
 
                         {this.icon(90)}

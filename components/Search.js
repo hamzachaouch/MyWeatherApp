@@ -4,14 +4,16 @@ import style from  '../Style'
 import  List from './List'
 import  {createStackNavigator} from  'react-navigation'
  class Search extends React.Component{
-    static  navigationOptions ={
-        title: 'Rechercher une ville',
-        tabBarIcon: ()=>{
-            return <Image source={require('./icons/home.png')} style={{ width:20 , height:20 }} />
-        }
-    }
+   /*  static  navigationOptions = ()=> {
+         return {
+             title : 'Rechercher une ville',
+             tabBarIcon: ()=>{
+                 return <Image source={require('./icons/home.png')} style={{ width:20 , height:20 }} />
+             }
+         }
+     }*/
 
-    constructor(props){
+     constructor(props){
         super(props)
         this.state = {
             city:'Montpelier'
@@ -54,12 +56,12 @@ const navigationOptions = {
 export  default createStackNavigator({
     Search:{
         screen : Search,
-        navigationOptions
+        navigationOptions,
 
     },
     Result : {
         screen: List,
-        navigationOptions
+        navigationOptions,
     }
 })
 

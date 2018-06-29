@@ -4,14 +4,14 @@ import  style from '../Style'
 import  axiox from 'axios'
 import InfoRow from './Weather/Row'
 export default  class List extends  React.Component{
-    static  navigationOptions = ({navigation})=> {
+  /*  static  navigationOptions = ({navigation})=> {
         return {
             title : `Météo / ${navigation.state.params.city}`,
             tabBarIcon: ()=>{
-                return <Image source={require('./icons/user.png')} style={{ width:20 , height:20 }} />
+                return <Image source={require('./icons/home.png')} style={{ width:20 , height:20 }} />
             }
         }
-    }
+    }*/
 
     constructor (props){
         super(props)
