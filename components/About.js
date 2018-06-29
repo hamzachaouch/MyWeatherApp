@@ -4,14 +4,14 @@ import style from  '../Style'
 
 export default class About extends React.Component
 {
- /*   static  navigationOptions = ()=> {
+   static  navigationOptions = ()=> {
         return {
             tabBarIcon: ()=>{
                 return <Image source={require('./icons/user.png')} style={{ width:20 , height:20 }} />
             }
         }
     }
-    */
+    
 
     find(){
         this.props.navigation.navigate('Search')
