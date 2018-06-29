@@ -1,11 +1,15 @@
 import React from  'react'
-import  {ListView,Text,ActivityIndicator} from 'react-native'
+import  {ListView,Text,Image,ActivityIndicator} from 'react-native'
 import  style from '../Style'
 import  axiox from 'axios'
+import InfoRow from './Weather/Row'
 export default  class List extends  React.Component{
     static  navigationOptions = ({navigation})=> {
         return {
-            title : `Météo / ${navigation.state.params.city}`
+            title : `Météo / ${navigation.state.params.city}`,
+            tabBarIcon: ()=>{
+                return <Image source={require('./icons/user.png')} style={{ width:20 , height:20 }} />
+            }
         }
     }
 
@@ -16,13 +20,18 @@ export default  class List extends  React.Component{
         city : this.props.navigation.state.params.city ,
         report : null
         }
-        this.fetchWeather()
+        setTimeout(()=>{
+            this.fetchWeather()
+        },1000)
+
     }
     fetchWeather(){
-        axiox.get(`https://samples.openweathermap.org/data/2.5/forecast/daily?q=${this.state.city}&appid=754adc8a2fc80f0c469065a538915e19`)
+
+        axiox.get(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&mode=json&appid=754adc8a2fc80f0c469065a538915e19`)
             .then((response)=>{
                 console.log(response.data)
-                this.state.report = response.data
+
+                this.setState({report:response.data})
             })
     }
 
@@ -32,12 +41,13 @@ export default  class List extends  React.Component{
                 <ActivityIndicator  color={style.color} size="large"/>
                 )
             }else{
-                const  ds= new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !==r2})
+                const  ds= new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2})
 
                 return(
                     <ListView
-                    dataSource={ds.cloneWithRows(this.state.report.list.main) }
-                    renderRow={ (row) => <Text> { row.temp }  </Text>}
+                    dataSource={ds.cloneWithRows(this.state.report.list) }
+
+                   renderRow={ (row,j,k) => <InfoRow day={row} index={parseInt(k,10)} /> }
                     />
 
 
