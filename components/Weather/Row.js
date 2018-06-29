@@ -2,6 +2,7 @@ import React from 'react'
 import { View,Text,StyleSheet,Image} from  'react-native'
 import PropTypes from 'prop-types'
 import  moment from 'moment'
+import Enter from '../Animations/DisplayAnimation'
 import 'moment/locale/fr'
 import globaleStyle from '../../Style'
 moment.locale('fr')
@@ -45,6 +46,7 @@ export default class Row extends React.Component{
     render (){
         if (this.props.index===0){
             return(
+                <Enter>
                 <View style={[style.view,{backgroundColor:'#e54b65'}]}>
                     <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center'}}>
                         <Text style={{color:'#FFF'}}> {this.getDay()}{this.getDate()} </Text>
@@ -53,11 +55,12 @@ export default class Row extends React.Component{
                     </View>
                     <Text style={[style.temp,{fontWeight:'bold',fontSize:35}]}> { Math.round(this.parseFarCel(this.props.day.main.temp))}°C </Text>
                 </View>
-
+                </Enter>
             )
 
         }else{
         return(
+            <Enter>
             <View style={style.view}>
                 <View style={{ flex:1 , flexDirection:'row' ,alignItems:'center'}}>
                     {this.icon()}
@@ -65,7 +68,7 @@ export default class Row extends React.Component{
                 </View>
                 <Text style={style.temp}> { Math.round(this.parseFarCel(this.props.day.main.temp))}°C </Text>
          </View>
-
+            </Enter>
         )
                     }
     }

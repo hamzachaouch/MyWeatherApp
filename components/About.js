@@ -11,7 +11,7 @@ export default class About extends React.Component
             }
         }
     }
-    
+
 
     find(){
         this.props.navigation.navigate('Search')
