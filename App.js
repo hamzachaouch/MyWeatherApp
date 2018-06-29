@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import  {View,StatusBar,Image} from 'react-native'
 import About from './components/About'
 import Search from './components/Search'
@@ -19,9 +19,8 @@ const Tabs = createBottomTabNavigator({
             }
 
           }
-     })}
-    ,
-    {
+     }),
+
         tabBarOptions:{
          showIcon : true,
          showLabel:false,
@@ -44,7 +43,7 @@ export default class App extends React.Component {
           <Tabs/>
       </View>
 
-    );
+    )
   }
 }
 
